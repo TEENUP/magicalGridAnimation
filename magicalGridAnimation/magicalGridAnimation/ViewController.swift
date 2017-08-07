@@ -13,11 +13,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        for i in 0...5 {
-            let redView = UIView()
-            redView.backgroundColor = randomColor()
-            redView.frame = CGRect(x: i*100, y: 0, width: 100, height: 100)
-            view.addSubview(redView)
+        
+        let numViewPerRow = 15
+        let numViewPerColumn = 30
+        let width = view.frame.width / CGFloat(numViewPerRow)
+        //let height = view.frame.height / CGFloat(numViewPerColumn)
+        //print("w",width)
+        //print("h",height)
+        
+        for i in 0...numViewPerRow {
+            for j in 0...numViewPerColumn {
+                
+            let cellView = UIView()
+            cellView.backgroundColor = randomColor()
+            cellView.frame = CGRect(x: CGFloat(i) * width, y:CGFloat(j)*width , width: width, height: width)
+            cellView.layer.borderWidth = 0.5
+            cellView.layer.borderColor = UIColor.black.cgColor
+            view.addSubview(cellView)
+            }
         }
         
         
